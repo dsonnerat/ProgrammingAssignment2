@@ -41,7 +41,8 @@ cacheSolve <- function(x, ...) {
         message("calculating inverse")
         data <- x$get()
         identity  <- diag(dim(data)[1]) ## indentiy matrix that have the same size than the matrix to inverse.
-        inverse <- solve(data,identity, ...) ## identity matrix is used in order to pass ... arguments in a proper maner.
+        ## identity matrix is used even if it is the default value in order to pass ... arguments in a proper maner.
+        inverse <- solve(a=data, b=identity, ...) 
         x$setinverse(inverse)
         inverse
 }
